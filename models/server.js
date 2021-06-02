@@ -1,25 +1,32 @@
 const express = require('express')
 const cors = require('cors')
+const { dbConnection } = require('../database/config')
 
 class Server{
+
     constructor(){
-        this.app = express()
-        this.port = process.env.PORT
+        this.app = express();
+        this.port = process.env.PORT;
 
         //Rutas
-        this.usuariosPath = '/api/usuarios'
+        this.usuariosPath = '/api/usuarios';
+
+        //Conexion a la db
+        this.conectarDB();
 
         //Moddlewares
-        this.middlewares()
+        this.middlewares();
 
         //Rutas de mi app
+        this.routes();
+    }
 
-
-        this.routes()
+    async conectarDB(){
+        await dbConnection();
     }
 
     routes(){
-        this.app.use(this.usuariosPath, require('../routes/usuarios'))
+        this.app.use(this.usuariosPath, require('../routes/usuarios'));
     }
 
     listen(){
@@ -31,14 +38,15 @@ class Server{
     middlewares(){
         //CORSE sirve para que solo se puedam hacer peticiones
         //desde ciertas paginas web
-        this.app.use(cors())
+        this.app.use(cors());
 
         //Parseo y lectura de body
-        this.app.use(express.json())
+        this.app.use(express.json());
         
         //Directorio publico
-        this.app.use(express.static('public'))
+        this.app.use(express.static('public'));
     }
+    
 }
 
 module.exports = Server
