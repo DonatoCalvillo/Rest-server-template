@@ -2,7 +2,11 @@ const {Router} = require('express')
 const { check } = require('express-validator')
 
 //IMPORTACIONES PROPIAS
-const {validarCampos} = require('../middlewares/validar-campos.js')
+const { validarCampos,
+    validarJWT,
+    esAdmin
+} = require('../middlewares')
+
 
 const { usuariosGet, 
     usuariosPost, 
@@ -43,6 +47,8 @@ router.post('/', [
 ], usuariosPost)
 
 router.delete('/:id', [
+    validarJWT,
+    esAdmin,
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom(usuarioPorIdExiste),
     validarCampos

@@ -59,11 +59,14 @@ const usuariosPut = async (req = request, res = response) => {
 const usuariosDelete = async(req, res = response) => {
     const {id} = req.params;
 
-    //Borrar un dato fisicamente de la db
+    //Borrar un dato fisicamente de la db----------------
     //const usuario = await Usuario.findByIdAndDelete(id);
+    //---------------------------------------------------
 
     const usuario = await Usuario.findByIdAndUpdate(id, {estado: false})
-    res.json(usuario);
+    const usuarioLogueado = req.usuario;
+
+    res.json({usuario,usuarioLogueado});
 }
 
 module.exports = {

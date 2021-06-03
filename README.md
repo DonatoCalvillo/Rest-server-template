@@ -10,3 +10,6 @@ Utilizamos Bcryptjs para encriptar la contrasenia
 
 El expressvalidator nos sirve para verificaciones de correo
 ```npm i express-validator```
+
+Instalamos jasonwebtoken para trabajar con los JWT
+```npm i jsonwebtoken```
