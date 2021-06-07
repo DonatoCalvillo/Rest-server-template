@@ -13,3 +13,6 @@ El expressvalidator nos sirve para verificaciones de correo
 
 Instalamos jasonwebtoken para trabajar con los JWT
 ```npm i jsonwebtoken```
+
+Para validar los tokens de google 
+```npm install google-auth-library --save```
