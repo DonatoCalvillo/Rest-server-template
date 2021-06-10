@@ -7,7 +7,6 @@ const { validarCampos,
     esAdmin
 } = require('../middlewares')
 
-
 const { usuariosGet, 
     usuariosPost, 
     usuariosPut,
