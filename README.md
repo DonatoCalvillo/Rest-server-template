@@ -16,3 +16,12 @@ Instalamos jasonwebtoken para trabajar con los JWT
 
 Para validar los tokens de google 
 ```npm install google-auth-library --save```
+
+Para cargar archivos
+````npm i express-fileupload````
+
+Para crear identificadores unicos para las imagenes
+````npm i uuid````
+
+Para guardar imagenes
+````npm i cloudinary````
